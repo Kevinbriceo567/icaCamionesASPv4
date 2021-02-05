@@ -1,0 +1,771 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DESACDCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="dtproperties">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="property" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="objectid" Type="int" />
+          <Property Name="property" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="value" Type="varchar" MaxLength="255" />
+          <Property Name="uvalue" Type="nvarchar" MaxLength="255" />
+          <Property Name="lvalue" Type="image" />
+          <Property Name="version" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'TIMASTER.dbo.pr_DespachoDiario' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="pr_DespachoDiario">
+          <Property Name="idDespachoDiario" Type="int" />
+        </EntityType>-->
+        <EntityType Name="pr_OrdenTransporte">
+          <Key>
+            <PropertyRef Name="idOrderTransporte" />
+            <PropertyRef Name="idCliente" />
+            <PropertyRef Name="IdProducto" />
+            <PropertyRef Name="IdRutaTipo" />
+          </Key>
+          <Property Name="idOrderTransporte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCliente" Type="int" Nullable="false" />
+          <Property Name="IdProducto" Type="int" Nullable="false" />
+          <Property Name="IdRutaTipo" Type="int" Nullable="false" />
+          <Property Name="Unidad" Type="nvarchar" MaxLength="50" />
+          <Property Name="estado" Type="nchar" MaxLength="1" />
+          <Property Name="FechaInicio" Type="date" />
+          <Property Name="FechaTermino" Type="date" Nullable="false" />
+          <Property Name="Tarifa" Type="float" />
+          <Property Name="usuario" Type="nvarchar" MaxLength="2" />
+          <Property Name="host" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="rl_TransportistaFlota">
+          <Key>
+            <PropertyRef Name="idTransportista" />
+            <PropertyRef Name="IdFlota" />
+          </Key>
+          <Property Name="idTransportista" Type="int" Nullable="false" />
+          <Property Name="IdFlota" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TIMASTER.dbo.se_Roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="se_Roles">
+          <Key>
+            <PropertyRef Name="COD_ROL" />
+          </Key>
+          <Property Name="COD_ROL" Type="int" Nullable="false" />
+          <Property Name="COD_USU" Type="int" />
+          <Property Name="NOM_ROL" Type="nvarchar" MaxLength="50" />
+          <Property Name="DES_ROL" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tb_Auxiliar">
+          <Key>
+            <PropertyRef Name="idAuxiliar" />
+          </Key>
+          <Property Name="idAuxiliar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RUT" Type="nvarchar" MaxLength="10" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Giro" Type="nvarchar" MaxLength="50" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="50" />
+          <Property Name="idComuna" Type="int" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClaCliente" Type="varchar" MaxLength="1" />
+          <Property Name="ClaProveedor" Type="varchar" MaxLength="1" />
+          <Property Name="usuario" Type="nvarchar" MaxLength="2" />
+          <Property Name="host" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tb_Ciudad">
+          <Key>
+            <PropertyRef Name="idCiudad" />
+          </Key>
+          <Property Name="idCiudad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ciudad" Type="nvarchar" MaxLength="50" />
+          <Property Name="idRegion" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_Comuna">
+          <Key>
+            <PropertyRef Name="idComuna" />
+          </Key>
+          <Property Name="idComuna" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Comuna" Type="nvarchar" MaxLength="50" />
+          <Property Name="idRegion" Type="int" />
+          <Property Name="usuario" Type="nvarchar" MaxLength="2" />
+          <Property Name="host" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TIMASTER.dbo.tb_Conductor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tb_Conductor">
+          <Key>
+            <PropertyRef Name="idConductor" />
+          </Key>
+          <Property Name="idConductor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RUN" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nombres" Type="nvarchar" MaxLength="50" />
+          <Property Name="Apellidos" Type="nvarchar" MaxLength="50" />
+          <Property Name="fNacimiento" Type="date" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="100" />
+          <Property Name="idComuna" Type="int" />
+          <Property Name="Telefono" Type="int" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="usuario" Type="nvarchar" MaxLength="2" />
+          <Property Name="host" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'TIMASTER.dbo.tb_Empresa' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_Empresa">
+          <Property Name="RUT" Type="nchar" MaxLength="10" />
+          <Property Name="RazonSocial" Type="nchar" MaxLength="10" />
+          <Property Name="Giro" Type="nchar" MaxLength="10" />
+          <Property Name="Direccion" Type="nchar" MaxLength="10" />
+          <Property Name="Comuna" Type="nchar" MaxLength="10" />
+          <Property Name="Provincia" Type="nchar" MaxLength="10" />
+          <Property Name="Region" Type="nchar" MaxLength="10" />
+          <Property Name="Telefono" Type="nchar" MaxLength="10" />
+          <Property Name="email" Type="nchar" MaxLength="10" />
+        </EntityType>-->
+        <EntityType Name="tb_Flota">
+          <Key>
+            <PropertyRef Name="idFlota" />
+          </Key>
+          <Property Name="idFlota" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Patente" Type="nvarchar" MaxLength="50" />
+          <Property Name="Marca" Type="nvarchar" MaxLength="50" />
+          <Property Name="Modelo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ayear" Type="int" />
+          <Property Name="Clasificacion" Type="nvarchar" MaxLength="1" />
+          <Property Name="idTipoCamion" Type="int" />
+          <Property Name="usuario" Type="nvarchar" MaxLength="2" />
+          <Property Name="host" Type="nvarchar" MaxLength="100" />
+          <Property Name="habilitado" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="tb_Producto">
+          <Key>
+            <PropertyRef Name="idProducto" />
+          </Key>
+          <Property Name="idProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Producto" Type="nvarchar" MaxLength="50" />
+          <Property Name="usuario" Type="nvarchar" MaxLength="2" />
+          <Property Name="host" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tb_Provincia">
+          <Key>
+            <PropertyRef Name="idProvincia" />
+          </Key>
+          <Property Name="idProvincia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Provincia" Type="nvarchar" MaxLength="50" />
+          <Property Name="idRegion" Type="int" />
+          <Property Name="usuario" Type="nvarchar" MaxLength="2" />
+          <Property Name="host" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tb_Region">
+          <Key>
+            <PropertyRef Name="idRegion" />
+          </Key>
+          <Property Name="idRegion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Region" Type="nvarchar" MaxLength="50" />
+          <Property Name="usuario" Type="nvarchar" MaxLength="2" />
+          <Property Name="host" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tb_Ruta">
+          <Key>
+            <PropertyRef Name="idRuta" />
+          </Key>
+          <Property Name="idRuta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ruta" Type="nvarchar" MaxLength="50" />
+          <Property Name="usuario" Type="nvarchar" MaxLength="2" />
+          <Property Name="host" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tb_RutaTipo">
+          <Key>
+            <PropertyRef Name="idRutaTipo" />
+          </Key>
+          <Property Name="idRutaTipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdRutaO" Type="int" />
+          <Property Name="IdRutaD" Type="int" />
+          <Property Name="Referencia" Type="nvarchar" MaxLength="100" />
+          <Property Name="usuario" Type="nvarchar" MaxLength="2" />
+          <Property Name="host" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tb_TipoFlota">
+          <Key>
+            <PropertyRef Name="idTipoFlota" />
+          </Key>
+          <Property Name="idTipoFlota" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoFlota" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tb_Transportista">
+          <Key>
+            <PropertyRef Name="idTransportista" />
+          </Key>
+          <Property Name="idTransportista" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RUT" Type="nvarchar" MaxLength="10" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Giro" Type="nvarchar" MaxLength="50" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="50" />
+          <Property Name="idComuna" Type="int" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="web" Type="nvarchar" MaxLength="50" />
+          <Property Name="contacto" Type="nvarchar" MaxLength="50" />
+          <Property Name="usuario" Type="nvarchar" MaxLength="2" />
+          <Property Name="host" Type="nvarchar" MaxLength="100" />
+          <Property Name="externo" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TIMASTER.dbo.tb_Usuarios' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tb_Usuarios">
+          <Key>
+            <PropertyRef Name="COD_USU" />
+            <PropertyRef Name="NOM_USU" />
+            <PropertyRef Name="NIC_USU" />
+            <PropertyRef Name="PER_USU" />
+            <PropertyRef Name="PWD_USU" />
+          </Key>
+          <Property Name="COD_USU" Type="int" Nullable="false" />
+          <Property Name="NOM_USU" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NIC_USU" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PER_USU" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PWD_USU" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DESACDCModelStoreContainer">
+          <EntitySet Name="dtproperties" EntityType="Self.dtproperties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pr_OrdenTransporte" EntityType="Self.pr_OrdenTransporte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rl_TransportistaFlota" EntityType="Self.rl_TransportistaFlota" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Auxiliar" EntityType="Self.tb_Auxiliar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Ciudad" EntityType="Self.tb_Ciudad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Comuna" EntityType="Self.tb_Comuna" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Flota" EntityType="Self.tb_Flota" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Producto" EntityType="Self.tb_Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Provincia" EntityType="Self.tb_Provincia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Region" EntityType="Self.tb_Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Ruta" EntityType="Self.tb_Ruta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_RutaTipo" EntityType="Self.tb_RutaTipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_TipoFlota" EntityType="Self.tb_TipoFlota" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Transportista" EntityType="Self.tb_Transportista" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="se_Roles" EntityType="Self.se_Roles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [se_Roles].[COD_ROL] AS [COD_ROL], 
+    [se_Roles].[COD_USU] AS [COD_USU], 
+    [se_Roles].[NOM_ROL] AS [NOM_ROL], 
+    [se_Roles].[DES_ROL] AS [DES_ROL]
+    FROM [dbo].[se_Roles] AS [se_Roles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tb_Conductor" EntityType="Self.tb_Conductor" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tb_Conductor].[idConductor] AS [idConductor], 
+    [tb_Conductor].[RUN] AS [RUN], 
+    [tb_Conductor].[Nombres] AS [Nombres], 
+    [tb_Conductor].[Apellidos] AS [Apellidos], 
+    [tb_Conductor].[fNacimiento] AS [fNacimiento], 
+    [tb_Conductor].[Direccion] AS [Direccion], 
+    [tb_Conductor].[idComuna] AS [idComuna], 
+    [tb_Conductor].[Telefono] AS [Telefono], 
+    [tb_Conductor].[email] AS [email], 
+    [tb_Conductor].[usuario] AS [usuario], 
+    [tb_Conductor].[host] AS [host]
+    FROM [dbo].[tb_Conductor] AS [tb_Conductor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tb_Usuarios" EntityType="Self.tb_Usuarios" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tb_Usuarios].[COD_USU] AS [COD_USU], 
+    [tb_Usuarios].[NOM_USU] AS [NOM_USU], 
+    [tb_Usuarios].[NIC_USU] AS [NIC_USU], 
+    [tb_Usuarios].[PER_USU] AS [PER_USU], 
+    [tb_Usuarios].[PWD_USU] AS [PWD_USU]
+    FROM [dbo].[tb_Usuarios] AS [tb_Usuarios]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DESACDCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DESACDCEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="Ps_se_Roles_byUsu" ReturnType="Collection(DESACDCModel.Ps_se_Roles_byUsu_Result)">
+          <Parameter Name="COD_USU" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Ps_se_Roles_Create">
+            <Parameter Name="COD_USU" Mode="In" Type="Int32" />
+            <Parameter Name="NOM_ROL" Mode="In" Type="String" />
+            <Parameter Name="DES_ROL" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Ps_se_Roles_Delete">
+          <Parameter Name="COD_USU" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Ps_se_Roles_Update">
+            <Parameter Name="COD_USU" Mode="In" Type="Int32" />
+            <Parameter Name="NOM_ROL" Mode="In" Type="String" />
+            <Parameter Name="DES_ROL" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="dtproperties" EntityType="DESACDCModel.dtproperties" />
+          <EntitySet Name="pr_OrdenTransporte" EntityType="DESACDCModel.pr_OrdenTransporte" />
+          <EntitySet Name="rl_TransportistaFlota" EntityType="DESACDCModel.rl_TransportistaFlota" />
+          <EntitySet Name="tb_Auxiliar" EntityType="DESACDCModel.tb_Auxiliar" />
+          <EntitySet Name="tb_Ciudad" EntityType="DESACDCModel.tb_Ciudad" />
+          <EntitySet Name="tb_Comuna" EntityType="DESACDCModel.tb_Comuna" />
+          <EntitySet Name="tb_Flota" EntityType="DESACDCModel.tb_Flota" />
+          <EntitySet Name="tb_Producto" EntityType="DESACDCModel.tb_Producto" />
+          <EntitySet Name="tb_Provincia" EntityType="DESACDCModel.tb_Provincia" />
+          <EntitySet Name="tb_Region" EntityType="DESACDCModel.tb_Region" />
+          <EntitySet Name="tb_Ruta" EntityType="DESACDCModel.tb_Ruta" />
+          <EntitySet Name="tb_RutaTipo" EntityType="DESACDCModel.tb_RutaTipo" />
+          <EntitySet Name="tb_TipoFlota" EntityType="DESACDCModel.tb_TipoFlota" />
+          <EntitySet Name="tb_Transportista" EntityType="DESACDCModel.tb_Transportista" />
+          <EntitySet Name="se_Roles" EntityType="DESACDCModel.se_Roles" />
+          <EntitySet Name="tb_Conductor" EntityType="DESACDCModel.tb_Conductor" />
+          <EntitySet Name="tb_Usuarios" EntityType="DESACDCModel.tb_Usuarios" />
+          </EntityContainer>
+        <ComplexType Name="Ps_se_Roles_byUsu_Result">
+          <Property Type="Int32" Name="COD_ROL" Nullable="false" />
+          <Property Type="Int32" Name="COD_USU" Nullable="false" />
+          <Property Type="String" Name="NOM_ROL" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DES_ROL" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="dtproperties">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="property" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="objectid" Type="Int32" />
+          <Property Name="property" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="value" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="uvalue" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lvalue" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pr_OrdenTransporte">
+          <Key>
+            <PropertyRef Name="idOrderTransporte" />
+            <PropertyRef Name="idCliente" />
+            <PropertyRef Name="IdProducto" />
+            <PropertyRef Name="IdRutaTipo" />
+          </Key>
+          <Property Name="idOrderTransporte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCliente" Type="Int32" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="IdRutaTipo" Type="Int32" Nullable="false" />
+          <Property Name="Unidad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="FechaTermino" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Tarifa" Type="Double" />
+          <Property Name="usuario" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="host" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="rl_TransportistaFlota">
+          <Key>
+            <PropertyRef Name="idTransportista" />
+            <PropertyRef Name="IdFlota" />
+          </Key>
+          <Property Name="idTransportista" Type="Int32" Nullable="false" />
+          <Property Name="IdFlota" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Auxiliar">
+          <Key>
+            <PropertyRef Name="idAuxiliar" />
+          </Key>
+          <Property Name="idAuxiliar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RUT" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Giro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idComuna" Type="Int32" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClaCliente" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ClaProveedor" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="usuario" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="host" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_Ciudad">
+          <Key>
+            <PropertyRef Name="idCiudad" />
+          </Key>
+          <Property Name="idCiudad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idRegion" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tb_Comuna">
+          <Key>
+            <PropertyRef Name="idComuna" />
+          </Key>
+          <Property Name="idComuna" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Comuna" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idRegion" Type="Int32" />
+          <Property Name="usuario" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="host" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_Flota">
+          <Key>
+            <PropertyRef Name="idFlota" />
+          </Key>
+          <Property Name="idFlota" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Patente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ayear" Type="Int32" />
+          <Property Name="Clasificacion" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="idTipoCamion" Type="Int32" />
+          <Property Name="usuario" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="host" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="habilitado" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_Producto">
+          <Key>
+            <PropertyRef Name="idProducto" />
+          </Key>
+          <Property Name="idProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="usuario" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="host" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_Provincia">
+          <Key>
+            <PropertyRef Name="idProvincia" />
+          </Key>
+          <Property Name="idProvincia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Provincia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idRegion" Type="Int32" />
+          <Property Name="usuario" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="host" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_Region">
+          <Key>
+            <PropertyRef Name="idRegion" />
+          </Key>
+          <Property Name="idRegion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="usuario" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="host" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_Ruta">
+          <Key>
+            <PropertyRef Name="idRuta" />
+          </Key>
+          <Property Name="idRuta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ruta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="usuario" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="host" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_RutaTipo">
+          <Key>
+            <PropertyRef Name="idRutaTipo" />
+          </Key>
+          <Property Name="idRutaTipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdRutaO" Type="Int32" />
+          <Property Name="IdRutaD" Type="Int32" />
+          <Property Name="Referencia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="usuario" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="host" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_TipoFlota">
+          <Key>
+            <PropertyRef Name="idTipoFlota" />
+          </Key>
+          <Property Name="idTipoFlota" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoFlota" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_Transportista">
+          <Key>
+            <PropertyRef Name="idTransportista" />
+          </Key>
+          <Property Name="idTransportista" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RUT" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Giro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idComuna" Type="Int32" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="web" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contacto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="usuario" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="host" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="externo" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="se_Roles">
+          <Key>
+            <PropertyRef Name="COD_ROL" />
+          </Key>
+          <Property Name="COD_ROL" Type="Int32" Nullable="false" />
+          <Property Name="COD_USU" Type="Int32" />
+          <Property Name="NOM_ROL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DES_ROL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_Conductor">
+          <Key>
+            <PropertyRef Name="idConductor" />
+          </Key>
+          <Property Name="idConductor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RUN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="idComuna" Type="Int32" />
+          <Property Name="Telefono" Type="Int32" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="usuario" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="host" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_Usuarios">
+          <Key>
+            <PropertyRef Name="COD_USU" />
+            <PropertyRef Name="NOM_USU" />
+            <PropertyRef Name="NIC_USU" />
+            <PropertyRef Name="PER_USU" />
+            <PropertyRef Name="PWD_USU" />
+          </Key>
+          <Property Name="COD_USU" Type="Int32" Nullable="false" />
+          <Property Name="NOM_USU" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NIC_USU" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PER_USU" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PWD_USU" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DESACDCModelStoreContainer" CdmEntityContainer="DESACDCEntities">
+          <EntitySetMapping Name="dtproperties">
+            <EntityTypeMapping TypeName="DESACDCModel.dtproperties">
+              <MappingFragment StoreEntitySet="dtproperties">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="lvalue" ColumnName="lvalue" />
+                <ScalarProperty Name="uvalue" ColumnName="uvalue" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="property" ColumnName="property" />
+                <ScalarProperty Name="objectid" ColumnName="objectid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pr_OrdenTransporte">
+            <EntityTypeMapping TypeName="DESACDCModel.pr_OrdenTransporte">
+              <MappingFragment StoreEntitySet="pr_OrdenTransporte">
+                <ScalarProperty Name="host" ColumnName="host" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="Tarifa" ColumnName="Tarifa" />
+                <ScalarProperty Name="FechaTermino" ColumnName="FechaTermino" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="IdRutaTipo" ColumnName="IdRutaTipo" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="idOrderTransporte" ColumnName="idOrderTransporte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rl_TransportistaFlota">
+            <EntityTypeMapping TypeName="DESACDCModel.rl_TransportistaFlota">
+              <MappingFragment StoreEntitySet="rl_TransportistaFlota">
+                <ScalarProperty Name="IdFlota" ColumnName="IdFlota" />
+                <ScalarProperty Name="idTransportista" ColumnName="idTransportista" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Auxiliar">
+            <EntityTypeMapping TypeName="DESACDCModel.tb_Auxiliar">
+              <MappingFragment StoreEntitySet="tb_Auxiliar">
+                <ScalarProperty Name="host" ColumnName="host" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="ClaProveedor" ColumnName="ClaProveedor" />
+                <ScalarProperty Name="ClaCliente" ColumnName="ClaCliente" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="idComuna" ColumnName="idComuna" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Giro" ColumnName="Giro" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="idAuxiliar" ColumnName="idAuxiliar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Ciudad">
+            <EntityTypeMapping TypeName="DESACDCModel.tb_Ciudad">
+              <MappingFragment StoreEntitySet="tb_Ciudad">
+                <ScalarProperty Name="idRegion" ColumnName="idRegion" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="idCiudad" ColumnName="idCiudad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Comuna">
+            <EntityTypeMapping TypeName="DESACDCModel.tb_Comuna">
+              <MappingFragment StoreEntitySet="tb_Comuna">
+                <ScalarProperty Name="host" ColumnName="host" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="idRegion" ColumnName="idRegion" />
+                <ScalarProperty Name="Comuna" ColumnName="Comuna" />
+                <ScalarProperty Name="idComuna" ColumnName="idComuna" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Flota">
+            <EntityTypeMapping TypeName="DESACDCModel.tb_Flota">
+              <MappingFragment StoreEntitySet="tb_Flota">
+                <ScalarProperty Name="habilitado" ColumnName="habilitado" />
+                <ScalarProperty Name="host" ColumnName="host" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="idTipoCamion" ColumnName="idTipoCamion" />
+                <ScalarProperty Name="Clasificacion" ColumnName="Clasificacion" />
+                <ScalarProperty Name="Ayear" ColumnName="Ayear" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Patente" ColumnName="Patente" />
+                <ScalarProperty Name="idFlota" ColumnName="idFlota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Producto">
+            <EntityTypeMapping TypeName="DESACDCModel.tb_Producto">
+              <MappingFragment StoreEntitySet="tb_Producto">
+                <ScalarProperty Name="host" ColumnName="host" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Provincia">
+            <EntityTypeMapping TypeName="DESACDCModel.tb_Provincia">
+              <MappingFragment StoreEntitySet="tb_Provincia">
+                <ScalarProperty Name="host" ColumnName="host" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="idRegion" ColumnName="idRegion" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="idProvincia" ColumnName="idProvincia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Region">
+            <EntityTypeMapping TypeName="DESACDCModel.tb_Region">
+              <MappingFragment StoreEntitySet="tb_Region">
+                <ScalarProperty Name="host" ColumnName="host" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="idRegion" ColumnName="idRegion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Ruta">
+            <EntityTypeMapping TypeName="DESACDCModel.tb_Ruta">
+              <MappingFragment StoreEntitySet="tb_Ruta">
+                <ScalarProperty Name="host" ColumnName="host" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+                <ScalarProperty Name="idRuta" ColumnName="idRuta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_RutaTipo">
+            <EntityTypeMapping TypeName="DESACDCModel.tb_RutaTipo">
+              <MappingFragment StoreEntitySet="tb_RutaTipo">
+                <ScalarProperty Name="host" ColumnName="host" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="IdRutaD" ColumnName="IdRutaD" />
+                <ScalarProperty Name="IdRutaO" ColumnName="IdRutaO" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="idRutaTipo" ColumnName="idRutaTipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_TipoFlota">
+            <EntityTypeMapping TypeName="DESACDCModel.tb_TipoFlota">
+              <MappingFragment StoreEntitySet="tb_TipoFlota">
+                <ScalarProperty Name="TipoFlota" ColumnName="TipoFlota" />
+                <ScalarProperty Name="idTipoFlota" ColumnName="idTipoFlota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Transportista">
+            <EntityTypeMapping TypeName="DESACDCModel.tb_Transportista">
+              <MappingFragment StoreEntitySet="tb_Transportista">
+                <ScalarProperty Name="externo" ColumnName="externo" />
+                <ScalarProperty Name="host" ColumnName="host" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="contacto" ColumnName="contacto" />
+                <ScalarProperty Name="web" ColumnName="web" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="idComuna" ColumnName="idComuna" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Giro" ColumnName="Giro" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="idTransportista" ColumnName="idTransportista" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="se_Roles">
+            <EntityTypeMapping TypeName="DESACDCModel.se_Roles">
+              <MappingFragment StoreEntitySet="se_Roles">
+                <ScalarProperty Name="DES_ROL" ColumnName="DES_ROL" />
+                <ScalarProperty Name="NOM_ROL" ColumnName="NOM_ROL" />
+                <ScalarProperty Name="COD_USU" ColumnName="COD_USU" />
+                <ScalarProperty Name="COD_ROL" ColumnName="COD_ROL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Conductor">
+            <EntityTypeMapping TypeName="DESACDCModel.tb_Conductor">
+              <MappingFragment StoreEntitySet="tb_Conductor">
+                <ScalarProperty Name="host" ColumnName="host" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="idComuna" ColumnName="idComuna" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="fNacimiento" ColumnName="fNacimiento" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="RUN" ColumnName="RUN" />
+                <ScalarProperty Name="idConductor" ColumnName="idConductor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Usuarios">
+            <EntityTypeMapping TypeName="DESACDCModel.tb_Usuarios">
+              <MappingFragment StoreEntitySet="tb_Usuarios">
+                <ScalarProperty Name="PWD_USU" ColumnName="PWD_USU" />
+                <ScalarProperty Name="PER_USU" ColumnName="PER_USU" />
+                <ScalarProperty Name="NIC_USU" ColumnName="NIC_USU" />
+                <ScalarProperty Name="NOM_USU" ColumnName="NOM_USU" />
+                <ScalarProperty Name="COD_USU" ColumnName="COD_USU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
