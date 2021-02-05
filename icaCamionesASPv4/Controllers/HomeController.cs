@@ -13,14 +13,21 @@ namespace icaCamionesASPv4.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Despachos()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Notificaciones()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult Ventas()
         {
             ViewBag.Message = "Your contact page.";
 
