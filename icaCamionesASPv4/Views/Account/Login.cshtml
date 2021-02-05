@@ -22,7 +22,7 @@
     <title>Panel - ICA Transportes</title>
 
     <!-- Fontfaces CSS-->
-    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="~/Content/css/font-face.css" rel="stylesheet" media="all">
     <link href="~/Content/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
 
     <!-- ÍCONOS -->
@@ -48,8 +48,8 @@
 
 </head>
 <body class="animsition">
-    <div class="page-wrapper">
-        <div class="page-content--bge5">
+    <div class="page-wrapper" style="background-image: linear-gradient( 0deg, rgb(51, 88, 244) 0%, rgb(29, 140, 248) 100%);padding-bottom: 0px;">
+        <div class="page-content--bge5" style="background-image: linear-gradient( 0deg, rgb(51, 88, 244) 0%, rgb(29, 140, 248) 100%);">
             <div class="container">
                 <div class="login-wrap">
                     <div class="login-content" style="border-radius: 20px;">
@@ -79,7 +79,7 @@
                                     </label>
                                     -->
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Ingresar</button>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" style="background-color: #419ef9;">Ingresar</button>
                             </form>
                             <!--
                             <div class="register-link">
@@ -101,7 +101,7 @@
         <div class="container" style="padding: 15px; text-align: center;">
             <div class="row">
                 <div class="col-md-12 footer-copyright">
-                    Copyright © 2019 IcaTransportes. Todos lo derechos reservados.
+                    Copyright © @ViewBag.anno IcaTransportes. Todos lo derechos reservados.
                 </div>
             </div>
         </div>

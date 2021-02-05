@@ -33,6 +33,15 @@ namespace icaCamionesASPv4.Controllers
         // GET: AccountNew
         public ActionResult Login()
         {
+            DateTime hoy = DateTime.Now;
+            string hoyS = hoy.Year.ToString() + "-" + hoy.Month.ToString() + "-" + hoy.Day.ToString();
+            string mesYear = hoy.Month.ToString() + "/" + hoy.Year.ToString();
+
+            DateTime FEC_FIN = DateTime.Parse(hoyS);
+            ViewBag.mostrar = true;
+
+            ViewBag.anno = hoy.Year.ToString();
+
             return View();
         }
 
