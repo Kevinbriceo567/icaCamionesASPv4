@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Perfil";
+}
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="title">Usuario</h5>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Usuario</label>
+                                    <input type="text" class="form-control" placeholder="Username" value="michael23">
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email</label>
+                                    <input type="email" class="form-control" placeholder="mike@email.com">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Teléfono</label>
+                                    <input type="text" class="form-control" placeholder="Home Address" value="+56 9 9777 5050">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label>Nombre completo</label>
+                                    <input type="text" class="form-control" placeholder="Nombre completo" value="Mike">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>RUT</label>
+                                    <input type="text" class="form-control" placeholder="RUT" value="Andrew">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-fill btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-user">
+                <div class="card-body">
+                    <p class="card-text">
+                        <div class="author">
+                            <div class="block block-one"></div>
+                            <div class="block block-two"></div>
+                            <div class="block block-three"></div>
+                            <div class="block block-four"></div>
+                            <a href="javascript:void(0)">
+                                <img class="avatar" src="~/Content/images/user.png" alt="...">
+                                <h5 class="title">@User.Identity.Name.ToString()</h5>
+                            </a>
+                        </div>
+                    <p class="description">
+                        {{Rol del usuario}}
+                    </p>
+                </div>
+                </p>
+                <div class="card-description" style="padding:20px">
+                    Do not be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

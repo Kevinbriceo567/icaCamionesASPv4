@@ -1,0 +1,140 @@
+﻿@using icaCamionesASPv4.Models
+@model LoginViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="~/favicon.png">
+
+    <!-- Required meta tags-->
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>Panel - ICA Transportes</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="~/Content/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+
+    <!-- ÍCONOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="~/Content/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="~/Content/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="~/Content/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="~/Content/vendor/animsition/animsition.min2.css" rel="stylesheet" media="all">
+    <link href="~/Content/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="~/Content/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="~/Content/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="~/Content/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="~/Content/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/Content/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="~/Content/css/theme8.css" rel="stylesheet" media="all">
+
+</head>
+<body class="animsition">
+    <div class="page-wrapper">
+        <div class="page-content--bge5">
+            <div class="container">
+                <div class="login-wrap">
+                    <div class="login-content" style="border-radius: 20px;">
+
+                        <div class="login-logo">
+                            <a href="#">
+                                <img src="~/Content/images/logo.png" alt="CoolAdmin">
+                            </a>
+                        </div>
+                        <div class="login-form">
+                            <form method="post">
+                                <div class="form-group">
+                                    <label>Usuario</label>
+                                    <input class="au-input au-input--full" type="text" name="NIC_USU" id="NIC_USU" placeholder="Usuario">
+                                </div>
+                                <div class="form-group">
+                                    <label>Contraseña</label>
+                                    <input class="au-input au-input--full" type="password" name="PWD_USU" id="PWD_USU" placeholder="Contraseña">
+                                </div>
+                                <div class="login-checkbox">
+                                    <!--
+                                    <label>
+                                        <input type="checkbox" name="remember">Recuérdame
+                                    </label>
+                                    <label>
+                                        <a href="#">Olvidó la contraseña?</a>
+                                    </label>
+                                    -->
+                                </div>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Ingresar</button>
+                            </form>
+                            <!--
+                            <div class="register-link">
+                                <p>
+                                    No tienes una cuenta?
+                                    <a href="#">Ingresa aqui</a>
+                                </p>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container" style="padding: 15px; text-align: center;">
+            <div class="row">
+                <div class="col-md-12 footer-copyright">
+                    Copyright © 2019 IcaTransportes. Todos lo derechos reservados.
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Jquery JS-->
+    <script src="~/Content/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="~/Content/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="~/Content/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="~/Content/vendor/slick/slick.min.js"></script>
+    <script src="~/Content/vendor/wow/wow.min.js"></script>
+    <script src="~/Content/vendor/animsition/animsition.min.js"></script>
+    <script src="~/Content/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="~/Content/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="~/Content/vendor/counter-up/jquery.counterup.min.js"></script>
+    <script src="~/Content/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="~/Content/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="~/Content/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="~/Content/vendor/select2/select2.min.js"></script>
+
+    <!-- Main JS-->
+    <script src="~/Content/js/main.js"></script>
+
+</body>
+
+</html>
+<!-- end document-->
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
