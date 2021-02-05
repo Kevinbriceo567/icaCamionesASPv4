@@ -21,7 +21,7 @@
         <EntityTypeShape EntityType="DESACDCModel.tb_Transportista" Width="1.5" PointX="8.75" PointY="7.75" />
         <EntityTypeShape EntityType="DESACDCModel.se_Roles" Width="1.5" PointX="10.75" PointY="0.75" />
         <EntityTypeShape EntityType="DESACDCModel.tb_Conductor" Width="1.5" PointX="0.75" PointY="10.75" />
-        <EntityTypeShape EntityType="DESACDCModel.tb_Usuarios" Width="1.5" PointX="2.75" PointY="10.75" />
+        <EntityTypeShape EntityType="DESACDCModel.tb_Usuarios" Width="1.5" PointX="3.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

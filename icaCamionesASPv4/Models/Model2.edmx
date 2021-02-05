@@ -18,11 +18,6 @@
           <Property Name="lvalue" Type="image" />
           <Property Name="version" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'TIMASTER.dbo.pr_DespachoDiario' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="pr_DespachoDiario">
-          <Property Name="idDespachoDiario" Type="int" />
-        </EntityType>-->
         <EntityType Name="pr_OrdenTransporte">
           <Key>
             <PropertyRef Name="idOrderTransporte" />
@@ -114,19 +109,6 @@ warning 6002: The table/view 'TIMASTER.dbo.tb_Conductor' does not have a primary
           <Property Name="usuario" Type="nvarchar" MaxLength="2" />
           <Property Name="host" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'TIMASTER.dbo.tb_Empresa' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tb_Empresa">
-          <Property Name="RUT" Type="nchar" MaxLength="10" />
-          <Property Name="RazonSocial" Type="nchar" MaxLength="10" />
-          <Property Name="Giro" Type="nchar" MaxLength="10" />
-          <Property Name="Direccion" Type="nchar" MaxLength="10" />
-          <Property Name="Comuna" Type="nchar" MaxLength="10" />
-          <Property Name="Provincia" Type="nchar" MaxLength="10" />
-          <Property Name="Region" Type="nchar" MaxLength="10" />
-          <Property Name="Telefono" Type="nchar" MaxLength="10" />
-          <Property Name="email" Type="nchar" MaxLength="10" />
-        </EntityType>-->
         <EntityType Name="tb_Flota">
           <Key>
             <PropertyRef Name="idFlota" />
@@ -231,6 +213,9 @@ warning 6002: The table/view 'TIMASTER.dbo.tb_Usuarios' does not have a primary 
           <Property Name="NIC_USU" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PER_USU" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PWD_USU" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMAIL_USU" Type="nvarchar" MaxLength="50" />
+          <Property Name="TELF_USU" Type="nvarchar" MaxLength="20" />
+          <Property Name="RUT_USU" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityContainer Name="DESACDCModelStoreContainer">
           <EntitySet Name="dtproperties" EntityType="Self.dtproperties" Schema="dbo" store:Type="Tables" />
@@ -276,7 +261,10 @@ warning 6002: The table/view 'TIMASTER.dbo.tb_Usuarios' does not have a primary 
     [tb_Usuarios].[NOM_USU] AS [NOM_USU], 
     [tb_Usuarios].[NIC_USU] AS [NIC_USU], 
     [tb_Usuarios].[PER_USU] AS [PER_USU], 
-    [tb_Usuarios].[PWD_USU] AS [PWD_USU]
+    [tb_Usuarios].[PWD_USU] AS [PWD_USU], 
+    [tb_Usuarios].[EMAIL_USU] AS [EMAIL_USU], 
+    [tb_Usuarios].[TELF_USU] AS [TELF_USU], 
+    [tb_Usuarios].[RUT_USU] AS [RUT_USU]
     FROM [dbo].[tb_Usuarios] AS [tb_Usuarios]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
@@ -527,6 +515,9 @@ warning 6002: The table/view 'TIMASTER.dbo.tb_Usuarios' does not have a primary 
           <Property Name="NIC_USU" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PER_USU" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PWD_USU" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL_USU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TELF_USU" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RUT_USU" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -737,6 +728,9 @@ warning 6002: The table/view 'TIMASTER.dbo.tb_Usuarios' does not have a primary 
           <EntitySetMapping Name="tb_Usuarios">
             <EntityTypeMapping TypeName="DESACDCModel.tb_Usuarios">
               <MappingFragment StoreEntitySet="tb_Usuarios">
+                <ScalarProperty Name="RUT_USU" ColumnName="RUT_USU" />
+                <ScalarProperty Name="TELF_USU" ColumnName="TELF_USU" />
+                <ScalarProperty Name="EMAIL_USU" ColumnName="EMAIL_USU" />
                 <ScalarProperty Name="PWD_USU" ColumnName="PWD_USU" />
                 <ScalarProperty Name="PER_USU" ColumnName="PER_USU" />
                 <ScalarProperty Name="NIC_USU" ColumnName="NIC_USU" />

@@ -19,5 +19,8 @@ namespace icaCamionesASPv4.Models
         public string NIC_USU { get; set; }
         public string PER_USU { get; set; }
         public string PWD_USU { get; set; }
+        public string EMAIL_USU { get; set; }
+        public string TELF_USU { get; set; }
+        public string RUT_USU { get; set; }
     }
 }

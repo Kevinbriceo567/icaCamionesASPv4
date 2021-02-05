@@ -27,7 +27,25 @@ namespace icaCamionesASPv4.Controllers
             DateTime FEC_FIN = DateTime.Parse(hoyS);
             ViewBag.mostrar = true;
 
-            return View();
+            string username = User.Identity.Name;
+
+            using (var context = new DESACDCEntities())
+            {
+
+                // Query for the Blog named ADO.NET Blog
+                var userData = context.tb_Usuarios
+                                .Where(b => b.NIC_USU == username)
+                                .FirstOrDefault();
+
+
+                    //Session["Login"] = model.NIC_USU.ToString();
+                    ViewBag.userData = userData;
+
+                
+                //ModelState.AddModelError("", "Invalid username or password");
+                return View();
+            }
+
         }
 
         // GET: AccountNew
