@@ -1,4 +1,5 @@
-﻿using System;
+﻿using icaCamionesASPv4.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace icaCamionesASPv4.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
